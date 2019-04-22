@@ -1,93 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Butter Cake Css Framework</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/butterCake.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/iron_fist.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/iron_fist_grid.css" rel="stylesheet" type="text/css">
 </head>
 
-<body id="home">
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
-    <!-- HEADER -->
-    <header>
-        <!-- NAVBAR -->
-        <nav class="navbar expand-md default bg-danger py-1">
-            <div class="container">
+    <body>
 
-                <!-- LOGO -->
-                <div class="brand">
-                    <a href="#!">
-                        <h2 class="m-0">Butter Cake</h2>
-                    </a>
-                </div>
-
-
-                <!-- NAVBAR -->
-                <div class="menu-box" id="mainNav">
-                    <!-- CLOSE BUTTON | MOBILE-->
-                    <div class="menu-close"><i class="fa fa-close"></i></div>
-
-                    <!-- MENU -->
-                    <ul class="menu ml-auto">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">about</a></li>
-                        <li class="dropdown">
-                            <a href="#!">dropdown <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#!">link</a></li>
-                                <li><a href="#!">link</a></li>
-                                <li><a href="#!">link</a></li>
-                                <li><a href="#!">link</a></li>
-                            </ul>
-                        </li>
-                        <li class="flex-justify-center"><a href="#!" class="btn-info btn-sm">button</a></li>
-                    </ul>
-                </div>
-
-                <!-- TOGGLER | MOBILE -->
-                <button class="toggler bg-secondary text-white" data-nav="#mainNav"><i class="fa fa-bars"></i></button>
-
-                <!-- OVERLAY | ON MOBILE -->
-                <div class="shadow"></div>
-
+        <div class="grid-wrapper">
+            <div class="col-15 top-nav">
+                <h1>All World All Day Skeet Challenge</h1>
+                <HR>
             </div>
-        </nav>
-    </header>
-
-
-    <!-- Jumbotron -->
-    <div class="jumbotron fluid">
-        <div class="container flex-center-center flex-column">
-            <h1>Starter Template</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure recusandae nemo quasi magni temporibus
-                iste.</p>
-            <a class="btn-primary" href="#">Dan kuhns</a>
+            <div class="col-10">
+                <ol>
+                    <li>Each member who participates puts in $20 at the beginning. At the end of the season, the winning
+                        team gets their money back ($120 total if all 6 are in). The remaining $240 is spent on a bbq
+                        for all three teams (food, drinks, everything). Losing team has to do the shopping.</li>
+                    <li>Winner is determined by grand total of all rounds shot. All 6 scores count so most possible
+                        points are 300 per week per team.</li>
+                    <li>If a shooter misses a station 7 target there is a one dollar penalty per night. This money will
+                        go to the best overall shooter and will be tracked by the team captains.</li>
+                    <li>Missed nights: if a banked score is used that score counts, if a sub is used that score counts
+                    </li>
+                    <li>Trash talk and insults are highly encouraged</li>
+                </ol>
+            </div>
+            <div class="col-5">
+                <h3>Top shooters</h3>
+                <div id="table_div"></div>
+            </div>
+            <div class="col-5">
+                <div id="barchart_div" style="border: 1px solid #ccc"></div>
+            </div>
+            <div class="col-5">
+                <div id="Sarah_chart_div" style="border: 1px solid #ccc"></div>
+            </div>
+            <div class="col-5">
+                <div id="Anthony_chart_div" style="border: 1px solid #ccc"></div>
+            </div>
         </div>
-        <div class="container flex-center-center flex-column"><a href="docs/girls-practice-plans.pdf">test doc</a></div>
-    </div>
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/butterCake.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127800936-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            // Load Charts and the corechart package.
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+            // Draw the pie chart for Station 7 when Charts is loaded.
+            google.charts.setOnLoadCallback(drawSarahChart);
 
-        gtag('config', 'UA-127800936-1');
-    </script>
+            // Draw the pie chart for the Broken when Charts is loaded.
+            google.charts.setOnLoadCallback(drawAnthonyChart);
+
+            // Callback that draws the pie chart for Station 7.
+            function drawSarahChart() {
+
+                // Create the data table for Station 7.
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Dead');
+                data.addColumn('number', 'Soon to be Dead');
+                data.addRows([
+                    ['Pull & Pray', 0],
+                    ['Porkeys Pigs', 1],
+                    ['Poachers', 4]
+                ]);
+
+                // Set options for Station 7 pie chart.
+                var options = {
+                    title: 'Station 7',
+                    width: 400,
+                    height: 300
+                };
+
+                // Instantiate and draw the chart for Station 7.
+                var chart = new google.visualization.PieChart(document.getElementById('Sarah_chart_div'));
+                chart.draw(data, options);
+            }
+
+            // Callback that draws the pie chart for Broken.
+            function drawAnthonyChart() {
+
+                // Create the data table for Broken.
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Dead');
+                data.addColumn('number', 'Soon to be Dead');
+                data.addRows([
+                    ['Dead', 577.1],
+                    ['Soon to be Dead', 10222.9]
+                ]);
+
+                // Set options for Broken pie chart.
+                var options = {
+                    title: 'Dead Birds vs Soon to be Dead',
+                    width: 400,
+                    height: 300
+                };
+
+                // Instantiate and draw the chart for Broken.
+                var chart = new google.visualization.PieChart(document.getElementById('Anthony_chart_div'));
+                chart.draw(data, options);
+            }
+
+            // Draw the pie chart and bar chart when Charts is loaded.
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Team');
+                data.addColumn('number', 'Score');
+                data.addRows([
+                    ['Pull & Pray', 0,],
+                    ['Porkys Pigs', 290.85],
+                    ['Poachers', 286.25]
+                ]);
+
+                var barchart_options = {
+                    title: 'Team Standings',
+                    width: 400,
+                    height: 300,
+                    legend: 'none'
+                };
+                var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
+                barchart.draw(data, barchart_options);
+            }
+
+            google.charts.load('current', {
+                'packages': ['table']
+            });
+            google.charts.setOnLoadCallback(drawTable);
+
+            function drawTable() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Shooter');
+                data.addColumn('number', 'Score');
+                data.addRows([
+                    ['Mark', {
+                        v: 49.20,
+                        f: '49.20'
+                    }, ],
+                    ['Dan T.', {
+                        v: 49.50,
+                        f: '49.50'
+                    }, ],
+                    ['Kyle', {
+                        v: 48.80,
+                        f: '48.80'
+                    }, ],
+                    ['Jim S.', {
+                        v: 48.80,
+                        f: '48.80'
+                    }, ],
+                    ['Jim D.', {
+                        v: 48.60,
+                        f: '48.60'
+                    }, ]
+                ]);
+
+                var table = new google.visualization.Table(document.getElementById('table_div'));
+
+                table.draw(data, {
+                    showRowNumber: false,
+                    width: '100%',
+                    height: '100%'
+                });
+            }
+        </script>
 
 
-</body>
+    </body>
 
 </html>
