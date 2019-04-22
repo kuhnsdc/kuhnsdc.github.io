@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* Iron Fist Grid CSS  */
+
+/*!
+ * Daniel Kuhns
+ */
+
+ 
+
+ .chart rect {
+    fill: steelblue;
+  }
+  
+  .chart text {
+    fill: white;
+    font: 10px sans-serif;
+    text-anchor: end;
+  }
+  
+  
