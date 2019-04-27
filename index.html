@@ -15,7 +15,8 @@
     <link href="css/iron_fist.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="css/iron_fist_grid.css" rel="stylesheet" type="text/css">
-     <link rel="shortcut icon" href="images/skeet_favicon.jpg" />
+    <link rel="shortcut icon" href="images/skeet_favicon.jpg" />
+
 </head>
 
 <body>
@@ -26,10 +27,13 @@
     <body>
 
         <div class="grid-wrapper">
-            <div class="col-15 top-nav">
-                <h1>All World All Day Skeet Challenge</h1>
-                <HR>
-            </div>
+            <div class="col-15 topnav">
+                <a class="active" href="#home">UnderGround Skeet League</a>
+                <div class="topnav-right">
+                  <a href="#search">Weekly Results</a>
+                  <a href="#search">Shooter Standings</a>
+                </div>
+              </div>
             <div class="col-10">
                 <ol>
                     <li>Each member who participates puts in $20 at the beginning. At the end of the season, the winning
@@ -37,15 +41,15 @@
                         for all three teams (food, drinks, everything). Losing team has to do the shopping.</li>
                     <li>Winner is determined by grand total of all rounds shot. All 6 scores count so most possible
                         points are 300 per week per team.</li>
-                    <li>If a shooter misses a station 7 target there is a one dollar penalty per night. This money will
+                    <li>If a shooter misses a Station 7 target there is a one dollar penalty per round. This money will
                         go to the best overall shooter and will be tracked by the team captains.</li>
-                    <li>Missed nights: if a banked score is used that score counts, if a sub is used that score counts.
+                    <li>Missed nights: if a banked score is used that score counts, if a sub is used that score counts
                     </li>
-                    <li>Trash talk and insults are highly encouraged.</li>
+                    <li>Trash talk and insults are highly encouraged</li>
                 </ol>
             </div>
             <div class="col-5">
-                <h3>Top Shooters</h3>
+                <h3>Top shooters</h3>
                 <div id="table_div"></div>
             </div>
             <div class="col-5">
@@ -82,16 +86,18 @@
                 data.addColumn('string', 'Dead');
                 data.addColumn('number', 'Soon to be Dead');
                 data.addRows([
-                    ['Pull & Pray', 0],
-                    ['Porkeys Pigs', 1],
-                    ['Poachers', 4]
+                    ['Pull & Pray', 7],
+                    ['Porkeys Pigs', 3],
+                    ['Poachers', 5]
                 ]);
 
                 // Set options for Station 7 pie chart.
                 var options = {
                     title: 'Station 7',
                     width: 400,
-                    height: 300
+                    height: 300,
+                    is3D: true,
+                    pieSliceText: 'value'
                 };
 
                 // Instantiate and draw the chart for Station 7.
@@ -115,7 +121,9 @@
                 var options = {
                     title: 'Dead Birds vs Soon to be Dead',
                     width: 400,
-                    height: 300
+                    height: 300,
+                    is3D: true,
+                    colors: ['#3366CC', '#F77152']
                 };
 
                 // Instantiate and draw the chart for Broken.
@@ -132,7 +140,7 @@
                 data.addColumn('string', 'Team');
                 data.addColumn('number', 'Score');
                 data.addRows([
-                    ['Pull & Pray', 0,],
+                    ['Pull & Pray', 0, ],
                     ['Porkys Pigs', 290.85],
                     ['Poachers', 286.25]
                 ]);
@@ -157,25 +165,20 @@
                 data.addColumn('string', 'Shooter');
                 data.addColumn('number', 'Score');
                 data.addRows([
-                    ['Mark M.', {
+                    ['Mark', {
                         v: 49.20,
-                        f: '49.20'
                     }, ],
                     ['Dan T.', {
                         v: 49.05,
-                        f: '49.05'
                     }, ],
                     ['Kyle', {
                         v: 48.80,
-                        f: '48.80'
                     }, ],
                     ['Jim S.', {
                         v: 48.80,
-                        f: '48.80'
                     }, ],
                     ['Jim D.', {
                         v: 48.60,
-                        f: '48.60'
                     }, ]
                 ]);
 
