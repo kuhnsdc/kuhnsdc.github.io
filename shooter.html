@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Shooter Standings</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/iron_fist.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/iron_fist_grid.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="images/skeet_favicon.jpg" />
+
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <body>
+
+        <div class="grid-wrapper">
+            <div class="col-15 topnav">
+                <a class="active" href="#home">UnderGround Skeet League</a>
+                <div class="topnav-right">
+                    <a href="#search">Weekly Results</a>
+                    <a href="#search">Shooter Standings</a>
+                </div>
+            </div>
+            <div class="col-15">
+                <div id="dashboard">
+                    <div id="filter_div"></div>
+                    <div id="table_div"></div>
+                </div>
+            </div>
+
+
+
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+                function drawVisualization() {
+                    // Prepare the data
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('string', 'Name');
+                    data.addColumn('number', 'Score');
+                    data.addColumn('number', 'Average');
+                    data.addColumn('string', 'Team');
+
+                    data.addRows([
+                        ['Andy S.', 0, 0, 'Pull and Pray'],
+                        ['Anton.', 100, 2, 'Porkys Pigs'],
+                        ['Dan K.', 0, 0, 'Pull and Pray'],
+                        ['Dan T.', 234, 2, 'Porkys Pigs'],
+                        ['Dave D.', 0, 0, 'Pull and Pray'],
+                        ['Dave R.', 100, 3, 'Porkys Pigs'],
+                        ['Dizzy A.', 0, 0, 'Pull and Pray'],
+                        ['Ed', 100, 2, 'Poachers'],
+                        ['James', 100, 3, 'Poachers'],
+                        ['Jim D.', 234, 2, 'Poachers'],
+                        ['Jim S.', 100, 2, 'Poachers'],
+                        ['Kenny C.', 0, 0, 'Pull and Pray'],
+                        ['Kevin B.', 234, 2, 'Porkys Pigs'],
+                        ['Kyle', 100, 2, 'Porkys Pigs'],
+                        ['Mark M.', 100, 3, 'Big Dogs'],
+                        ['Pat R.', 0, 0, 'Pull and Pray'],
+                        ['Randy', 100, 2, 'Poachers'],
+                        ['Terry', 100, 3, 'Porkys Pigs'],
+                        ['Walt', 234, 4, 'Poachers']
+                    ]);
+
+                    var options = {
+                        chart: {
+                            title: 'Weekly Scores',
+                        },
+                        
+                    };
+
+                    // create a list of columns for the dashboard
+                    var columns = [{
+                        // this column aggregates all of the data into one column
+                        // for use with the string filter
+                        type: 'string',
+                        calc: function (dt, row) {
+                            for (var i = 0, vals = [], cols = dt.getNumberOfColumns(); i < cols; i++) {
+                                vals.push(dt.getFormattedValue(row, i));
+                            }
+                            return vals.join('\n');
+                        }
+                    }];
+                    for (var i = 0, cols = data.getNumberOfColumns(); i < cols; i++) {
+                        columns.push(i);
+                    }
+
+                    // Define a Search For table
+                    var filter = new google.visualization.ControlWrapper({
+                        controlType: 'StringFilter',
+                        containerId: 'filter_div',
+                        options: {
+                            filterColumnIndex: 0,
+                            matchType: 'any',
+                            caseSensitive: false,
+                            ui: {
+                                label: 'Search table:'
+                            }
+                        },
+                        view: {
+                            columns: columns
+                        }
+                    });
+
+                    // Define a table chart
+                    var table = new google.visualization.ChartWrapper({
+                        chartType: 'Table',
+                        containerId: 'table_div',
+                        options: {
+                            width: '100%',
+                        },
+                        view: {
+                            columns: [1, 2, 3, 4]
+                        }
+                    });
+
+                    var dashboard = new google.visualization.Dashboard(document.getElementById('dashboard'));
+                    dashboard.bind([filter], [table]);
+                    dashboard.draw(data);
+                }
+                google.load('visualization', '1', {
+                    packages: ['controls'],
+                    callback: drawVisualization
+                });
+            </script>
+
+
+    </body>
+
+</html>
