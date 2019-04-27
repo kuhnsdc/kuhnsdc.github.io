@@ -1,0 +1,21 @@
+{
+    "Shooters": [
+        {
+          "shooter_name": "Dan",
+          "shooter_score": 48
+        },
+        {
+          "shooter_name": "Andy",
+          "shooter_score": 48
+        },
+        {
+          "shooter_name": "Kenny",
+          "shooter_score": 49
+        },
+        {
+          "shooter_name": "Mark",
+          "shooter_score": 50
+        }
+       ]
+ }
+
